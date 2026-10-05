@@ -44,7 +44,7 @@ btnAgregarTec.addEventListener("click", () => {
 		return;
 	}
 
-	//Limpia mensaje de error 
+	//mensaje de error 
 	msjErrorForm.textContent = "";
 
 	//nueva tarjeta 
@@ -70,6 +70,9 @@ btnAgregarTec.addEventListener("click", () => {
 	const contenedorTarjetas = document.getElementById("contenedor-tecnologias");
 	if (contenedorTarjetas) {
 		contenedorTarjetas.appendChild(tarjeta);
+		const tecsGuardadas = JSON.parse(localStorage.getItem("tecnologiasLocal")) || [];
+		tecsGuardadas.push({ nombre: valNombre, descripcion: valDesc, tipo: valCat});
+		localStorage.setItem("tecnologiasLocal", JSON.stringify(tecsGuardadas));
 	}
 
 	// se limpian los inputs
